@@ -12,10 +12,10 @@ for file in "$@"; do
     size=$(ls -sh "$file")
     size=${size/\ *}
 
-    md5=$(md5sum "$file")
-    md5=${md5/\ *}
+    digest=$(sha1sum "$file")
+    digest=${digest/\ *}
 
-    text="$size / $duration / $md5"
+    text="$size / $duration / $digest"
     text=${text//":"/"\:"}
 
     ffmpeg -skip_frame nokey -i "$file" -vf scale=320:-1,tile=4x4:color=white:padding=5:margin=50,drawtext="fontfile=$font: text='$text':fontsize=30:y=10:x=50" -vsync 0 -frames:v 1 -y "${file/.*/.jpg}"
