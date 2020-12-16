@@ -26,8 +26,8 @@ for file in "$@"; do
     do
         pos=$((pos+start))
         possuffix=`printf "%010d" $pos` # padding needed to keep natural sorting order
-        ffmpeg -loglevel error -skip_frame nokey -ss "$pos"s -i "$file" -vf scale=320:-1 -vsync 0 -frames:v 1 -y "$tmpdir/${file/.*/_$possuffix.jpg}"
+        ffmpeg -loglevel quiet -skip_frame nokey -ss "$pos"s -i "$file" -vf thumbnail=10,scale=320:-1 -vsync 0 -frames:v 1 -y "$tmpdir/${file/.*/_$possuffix.jpg}"
     done
-    ffmpeg -loglevel error -pattern_type glob -i "$tmpdir/*.jpg" -vf tile=4x4:color=white:padding=5:margin=50,drawtext="fontfile=$font: text='$text':fontsize=30:y=10:x=50" -vsync 0 -frames:v 1 -y "${file/.*/.jpg}"
+    ffmpeg -loglevel quiet -pattern_type glob -i "$tmpdir/*.jpg" -vf tile=4x4:color=white:padding=5:margin=50,drawtext="fontfile=$font: text='$text':fontsize=30:y=10:x=50" -vsync 0 -frames:v 1 -y "${file/.*/.jpg}"
     rm -r "$tmpdir"
 done
