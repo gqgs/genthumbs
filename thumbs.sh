@@ -18,9 +18,14 @@ if [ $# -eq "0" ]; then
 fi
 
 for file in "$@"; do
-    echo "Processing: '$file'"
+    echo "processing: '$file'"
     duration=$(ffprobe "$file" -show_entries format=duration -v quiet -of csv="p=0")
     duration=${duration/.*}
+
+    if [[ $duration == "N/A" ]]; then
+        echo "invalid duration '$duration'"
+        continue
+    fi
 
     date="@$duration"
     timestamp=$(date -u --date=$date +"%T")
