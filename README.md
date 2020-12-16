@@ -18,6 +18,7 @@ genThumbs [videos]
  - `bc`
  
  ### Examples
- 
+
+ ![BigBuckBunny](/assets/BigBuckBunny.png)
  ![owarimonogatari](/assets/owarimonogatari.png)
  ![bonobo](/assets/bonobo.png)
