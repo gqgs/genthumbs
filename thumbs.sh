@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-font="/usr/share/fonts/truetype/freefont/FreeSerif.ttf"
-
 usage() {
     echo "Usage: genThumbs [videos]"
     exit 1
