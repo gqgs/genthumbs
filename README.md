@@ -12,6 +12,14 @@ make install
 genThumbs [videos]
 ```
 
+### Docker
+
+```
+make build
+
+docker run -v "$(pwd)":/home/ genthumbs [videos]
+```
+
 ### Dependencies
  - `ffmpeg`
  - `ffprobe`
