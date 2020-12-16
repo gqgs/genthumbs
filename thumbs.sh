@@ -21,6 +21,7 @@ for file in "$@"; do
     echo "Processing: '$file'"
     duration=$(ffprobe "$file" -show_entries format=duration -v quiet -of csv="p=0")
     duration=${duration/.*}
+
     date="@$duration"
     timestamp=$(date -u --date=$date +"%T")
 
@@ -42,9 +43,9 @@ for file in "$@"; do
         pos=$(bc <<< "scale=2; $pos + $start")
         n=$(bc <<< "scale=0; 20*$pos/$duration")
         possuffix=`printf "%010.f" $n` # padding needed to keep natural sorting order
-        ffmpeg -loglevel error -ss "$pos"s -i "$file" -vf thumbnail=10,scale=320:-1 -vsync 0 -frames:v 1 -y "$tmpdir/${file/.*/_$possuffix.jpg}" &
+        ffmpeg -nostdin -loglevel error -ss "$pos"s -i "$file" -vf thumbnail=10,scale=320:-1 -vsync 0 -frames:v 1 -y "$tmpdir/${file/.*/_$possuffix.jpg}" &
     done
     wait
-    ffmpeg -loglevel error -pattern_type glob -i "$tmpdir/*.jpg" -vf tile=4x4:color=white:padding=5:margin=50,drawtext="text='$text':fontsize=30:y=10:x=50" -vsync 0 -frames:v 1 -y "${file/.*/.png}"
+    ffmpeg -nostdin -loglevel error -pattern_type glob -i "$tmpdir/*.jpg" -vf tile=4x4:color=white:padding=5:margin=50,drawtext="text='$text':fontsize=30:y=10:x=50" -vsync 0 -frames:v 1 -y "${file/.*/.png}"
     rm -r "$tmpdir"
 done
