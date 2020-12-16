@@ -20,13 +20,14 @@ for file in "$@"; do
 
     tmpdir=$(mktemp -d)
 
-    start=$((duration/20))
+    start=$(bc <<< "scale=2; $duration/20")
     pos=$start
-    while [ $pos -lt $duration ]
+    while [ "$(bc <<< "$pos < $duration")" == "1" ]
     do
-        pos=$((pos+start))
-        possuffix=`printf "%010d" $pos` # padding needed to keep natural sorting order
-        ffmpeg -loglevel quiet -skip_frame nokey -ss "$pos"s -i "$file" -vf thumbnail=10,scale=320:-1 -vsync 0 -frames:v 1 -y "$tmpdir/${file/.*/_$possuffix.jpg}" &
+        pos=$(bc <<< "scale=2; $pos + $start")
+        n=$(bc <<< "scale=0; 20*$pos/$duration")
+        possuffix=`printf "%010.f" $n` # padding needed to keep natural sorting order
+        ffmpeg -loglevel quiet -ss "$pos"s -i "$file" -vf thumbnail=10,scale=320:-1 -vsync 0 -frames:v 1 -y "$tmpdir/${file/.*/_$possuffix.jpg}" &
     done
     wait
     ffmpeg -loglevel quiet -pattern_type glob -i "$tmpdir/*.jpg" -vf tile=4x4:color=white:padding=5:margin=50,drawtext="fontfile=$font: text='$text':fontsize=30:y=10:x=50" -vsync 0 -frames:v 1 -y "${file/.*/.jpg}"
