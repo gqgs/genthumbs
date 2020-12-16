@@ -2,6 +2,24 @@
 
 font="/usr/share/fonts/truetype/freefont/FreeSerif.ttf"
 
+
+usage() {
+    echo "Usage: genThumbs [videos]"
+    exit 1
+}
+
+while getopts ":*" opt; do
+    case "${opt}" in
+    *)
+        usage
+        ;;
+    esac
+done
+
+if [ $# -eq "0" ]; then
+    usage
+fi
+
 for file in "$@"; do
     echo "Processing: '$file'"
     duration=$(ffprobe "$file" -show_entries format=duration -v quiet -of csv="p=0")
