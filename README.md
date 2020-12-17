@@ -27,6 +27,6 @@ docker run -v "$(pwd)":/home/ genthumbs [videos]
  
  ### Examples
 
- ![BigBuckBunny](/assets/BigBuckBunny.png)
- ![owarimonogatari](/assets/owarimonogatari.png)
- ![bonobo](/assets/bonobo.png)
+ ![BigBuckBunny](/assets/BigBuckBunny.jpg)
+ ![owarimonogatari](/assets/owarimonogatari.jpg)
+ ![bonobo](/assets/bonobo.jpg)
