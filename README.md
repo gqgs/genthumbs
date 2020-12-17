@@ -9,7 +9,7 @@ make install
 ### Usage
 
 ```
-genThumbs [videos]
+genthumbs [videos]
 ```
 
 ### Docker

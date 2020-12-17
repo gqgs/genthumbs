@@ -9,8 +9,8 @@ RUN wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.t
     && mv ffmpeg-${FFMPEG_VERSION}-amd64-static/ffmpeg /usr/bin/ \
     && mv ffmpeg-${FFMPEG_VERSION}-amd64-static/ffprobe /usr/bin/
 
-COPY thumbs.sh /usr/bin/genThumbs
+COPY thumbs.sh /usr/bin/genthumbs
 
 WORKDIR "/home/"
 
-ENTRYPOINT ["/bin/bash", "/usr/bin/genThumbs"]
+ENTRYPOINT ["/bin/bash", "/usr/bin/genthumbs"]

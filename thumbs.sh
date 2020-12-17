@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 usage() {
-    echo "Usage: genThumbs [videos]"
+    echo "Usage: genthumbs [videos]"
     exit 1
 }
 
