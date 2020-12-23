@@ -2,7 +2,7 @@ FROM alpine
 
 ARG FFMPEG_VERSION=4.3.1
 
-RUN apk add --no-cache bash bc fontconfig ttf-ubuntu-font-family coreutils
+RUN apk add --no-cache bash bc fontconfig ttf-ubuntu-font-family coreutils xxhash
 
 RUN wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
     && tar xf ffmpeg-release-amd64-static.tar.xz \

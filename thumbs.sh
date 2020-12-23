@@ -43,7 +43,7 @@ for file in "$@"; do
     size=$(ls -sh "$file")
     size=${size/\ *}
 
-    digest=$(sha1sum "$file")
+    digest=$(xxh128sum "$file")
     digest=${digest/\ *}
 
     text="$size / $timestamp / $digest"
