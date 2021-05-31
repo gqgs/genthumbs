@@ -1,0 +1,20 @@
+{
+  "name": "genthumbs",
+  "version": "1.0.0",
+  "description": "Generate video mosaic previews",
+  "preferGlobal": "true",
+  "bin": "./thumbs.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gqgs/genthumbs.git"
+  },
+  "author": "gqgs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gqgs/genthumbs/issues"
+  },
+  "homepage": "https://github.com/gqgs/genthumbs#readme"
+}

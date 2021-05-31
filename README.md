@@ -12,18 +12,10 @@ make install
 genthumbs [videos]
 ```
 
-### Docker
-
-```
-make build
-
-docker run -v "$(pwd)":/home/ genthumbs [videos]
-```
-
 ### Dependencies
  - `ffmpeg`
  - `ffprobe`
- - `bc`
+ - `zx`
  
  ### Examples
 
