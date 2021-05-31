@@ -1,4 +1,4 @@
-Generate video mosaic previews.
+CLI to create video mosaics.
 
 ### Installation
 
