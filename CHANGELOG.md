@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/gqgs/genthumbs/compare/v1.0.0...v1.1.0) (2021-05-31)
+
+
+### Features
+
+* add draw timestamp option ([f099c02](https://github.com/gqgs/genthumbs/commit/f099c02f4800cc1a73f8fa17656e5bee8aa38c65))
+* port it to zx ([b7bdbeb](https://github.com/gqgs/genthumbs/commit/b7bdbebccd1afab7405b0e030bd415ae41364a5c))
+
 ## 1.0.0 (2020-12-17)
 
 
