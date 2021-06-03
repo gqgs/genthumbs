@@ -2,12 +2,16 @@
 
 const usage = () => {
     console.log("Usage: genthumbs [videos]")
+    console.log("--open open the thumbnail after creation")
     process.exit(2)
 }
 
-const files = process.argv.splice(3)
-const help = files.filter(file => file === "--help")
-if (files.length == 0 || help.length) {
+const args = process.argv.splice(3)
+const help = args.filter(arg => arg === "--help").length > 0
+const open = args.filter(arg => arg === "--open").length > 0
+const files = args.filter(arg => !arg.startsWith("-"))
+
+if (files.length == 0 || help) {
     usage()
 }
 
@@ -36,5 +40,7 @@ files.forEach(async file => {
             -vf tile=4x4:color=white:padding=5:margin=50,drawtext="text=${text}:fontsize=30:y=10:x=50" \
             -vsync 0 -frames:v 1 -q:v 1 -y ${output}`
 
-    await $`rm -rf "${tmpdir}"`
+    await $`rm -rf ${tmpdir}`
+
+    if (open) $`xdg-open ${output}`
 })
