@@ -9,19 +9,25 @@ const usage = () => {
 const args = process.argv.splice(3)
 const help = args.filter(arg => arg === "--help").length > 0
 const open = args.filter(arg => arg === "--open").length > 0
+const nohash = args.filter(arg => arg === "--nohash").length > 0
 const files = args.filter(arg => !arg.startsWith("-"))
 
 if (files.length == 0 || help) {
     usage()
 }
 
+const gridText = async (file, size, timestamp) => {
+    if (nohash) return `${size} / ${timestamp}`
+    const digest = await $`xxh128sum ${file} 2>/dev/null | awk '{print $1}'`
+    return `${size} / ${timestamp} / ${digest}`
+}
+
 files.forEach(async file => {
     const duration = await $`ffprobe ${file} -show_entries format=duration -v quiet -of csv="p=0"`
     const timestamp = await $`date -u --date=@${duration} +"%T"`
     const size = await $`ls -sh ${file} | awk '{print $1}'`
-    const digest = await $`xxh128sum ${file} 2>/dev/null | awk '{print $1}'`
 
-    const text = `${size} / ${timestamp} / ${digest}`.replaceAll(":", "\\:").replaceAll("\n", "")
+    const text = (await gridText(file, size, timestamp)).replaceAll(":", "\\:").replaceAll("\n", "")
     const tmpdir = await $`mktemp -d`
     const step = parseFloat(duration)/20
     const jobs = []
