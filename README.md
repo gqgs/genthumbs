@@ -16,6 +16,7 @@ genthumbs [videos]
  - `ffmpeg`
  - `ffprobe`
  - `zx`
+ - `xxh128sum (optional)`
  
  ### Examples
 
