@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/gqgs/genthumbs/compare/v1.1.0...v1.2.0) (2021-06-06)
+
+
+### Features
+
+* add --nohash option ([fe5ee3e](https://github.com/gqgs/genthumbs/commit/fe5ee3ed5e3caa747a355410b9f65981bef97470))
+* add --open option ([c29a8e5](https://github.com/gqgs/genthumbs/commit/c29a8e5c72d0561958bb8d5b46611cde7dc7bafd))
+* add rule to create mpv user script ([1322d15](https://github.com/gqgs/genthumbs/commit/1322d159655e7a63b134e2abfa5a91024d33a40c))
+
 ## [1.1.0](https://github.com/gqgs/genthumbs/compare/v1.0.0...v1.1.0) (2021-05-31)
 
 
