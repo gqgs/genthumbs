@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/gqgs/genthumbs/issues"
   },
-  "homepage": "https://github.com/gqgs/genthumbs#readme"
+  "homepage": "https://github.com/gqgs/genthumbs#readme",
+  "dependencies": {
+    "zx": "^1.14.1"
+  }
 }

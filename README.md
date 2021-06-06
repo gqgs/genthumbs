@@ -6,6 +6,12 @@ CLI to create video mosaics.
 make install
 ```
 
+If you're on Linux a mpv user script can be create with:
+
+```
+make mpv
+```
+
 ### Usage
 
 ```
