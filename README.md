@@ -2,10 +2,6 @@ CLI to create video mosaics.
 
 ### Installation
 
-```
-make install
-```
-
 If you're on Linux a mpv user script can be create with:
 
 ```
@@ -14,9 +10,7 @@ make mpv
 
 ### Usage
 
-```
-genthumbs [videos]
-```
+The default keybind to generate previews is the 'g' key.
 
 ### Dependencies
  - `ffmpeg`
